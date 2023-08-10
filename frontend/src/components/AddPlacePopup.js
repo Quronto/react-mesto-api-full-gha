@@ -2,8 +2,9 @@ import React, { useState, useEffect } from "react";
 import PopupWithForm from "./PopupWithForm";
 
 function AddPlacePopup({ isOpen, onAddPlace, onClose }) {
-  const [title, setTitle] = useState("");
-  const [link, setLink] = useState("");
+
+  const [title, setTitle] = useState('');
+  const [link, setLink] = useState('');
 
   function handleTitleChange(evt) {
     setTitle(evt.target.value);
@@ -14,16 +15,16 @@ function AddPlacePopup({ isOpen, onAddPlace, onClose }) {
   }
 
   useEffect(() => {
-    setTitle("");
-    setLink("");
-  }, [isOpen]);
+    setTitle('');
+    setLink('');
+  }, [isOpen])
 
   function handleSubmit(e) {
     e.preventDefault();
 
     onAddPlace({
       name: title,
-      link: link,
+      link: link
     });
   }
 
@@ -61,7 +62,7 @@ function AddPlacePopup({ isOpen, onAddPlace, onClose }) {
       />
       <span id="input-link-error" className="popup__error" />
     </PopupWithForm>
-  );
+  )
 }
 
 export default AddPlacePopup;
