@@ -1,29 +1,30 @@
 import React, { useRef, useEffect } from "react";
 import PopupWithForm from "./PopupWithForm";
 
-function EditAvatarPopup({ onUpdateAvatar, isOpen, onClose }) {
+function EditAvatarPopup(props) {
+
   const urlRef = useRef();
 
   function handleSubmit(e) {
     e.preventDefault();
 
-    onUpdateAvatar({
-      avatar: urlRef.current.value,
+    props.onUpdateAvatar({
+      avatar: urlRef.current.value
     });
   }
 
   useEffect(() => {
-    urlRef.current.value = " ";
-  }, [isOpen]);
+    urlRef.current.value = '';
+  }, [props.isOpen]);
 
   return (
     <PopupWithForm
       title="Обновить аватар"
       name="avatar"
       submit="Сохранить"
-      isOpen={isOpen}
-      onClose={onClose}
-      onUpdateAvatar={onUpdateAvatar}
+      isOpen={props.isOpen}
+      onClose={props.onClose}
+      onUpdateAvatar={props.onUpdateAvatar}
       onSubmit={handleSubmit}
     >
       <input
@@ -37,7 +38,7 @@ function EditAvatarPopup({ onUpdateAvatar, isOpen, onClose }) {
       />
       <span id="input-link-avatar-error" className="popup__error" />
     </PopupWithForm>
-  );
+  )
 }
 
-export default EditAvatarPopup;
+export default EditAvatarPopup

@@ -1,25 +1,25 @@
 import React, { useState } from "react";
 
-function Login({ onLogin, title, textSubmit }) {
+function Login(props) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
-  function handlePasswordChange(evt) {
-    setPassword(evt.target.value);
-  }
 
   function handleEmailChange(evt) {
     setEmail(evt.target.value);
   }
 
+  function handlePasswordChange(evt) {
+    setPassword(evt.target.value);
+  }
+
   function handleSubmit(evt) {
     evt.preventDefault();
-    onLogin(email, password);
+    props.onLogin(email, password);
   }
 
   return (
     <section className="login">
-      <h2 className="login__title">{title}</h2>
+      <h2 className="login__title">{props.title}</h2>
       <form className="login__form" onSubmit={handleSubmit}>
         <input
           className="login__input"
@@ -37,12 +37,10 @@ function Login({ onLogin, title, textSubmit }) {
           value={password}
           required
         />
-        <button className="login__button button" type="submit">
-          {textSubmit}
-        </button>
+        <button className="login__button button" type="submit">{props.textSubmit}</button>
       </form>
     </section>
-  );
+  )
 }
 
-export default Login;
+export default Login

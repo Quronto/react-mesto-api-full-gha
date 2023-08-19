@@ -1,12 +1,13 @@
 import React, { useState, useEffect, useContext } from "react";
-import { CurrentUserContext } from "../contexts/CurrentUserContext";
 import PopupWithForm from "./PopupWithForm";
+import { CurrentUserContext } from "../contexts/CurrentUserContext";
 
-function EditProfilePopup({ onUpdateUser, isOpen, onClose }) {
+function EditProfilePopup(props) {
+
   const currentUser = useContext(CurrentUserContext);
 
-  const [name, setName] = useState("");
-  const [description, setDescription] = useState("");
+  const [name, setName] = useState('');
+  const [description, setDescription] = useState('');
 
   function handleNameChange(evt) {
     setName(evt.target.value);
@@ -19,14 +20,14 @@ function EditProfilePopup({ onUpdateUser, isOpen, onClose }) {
   useEffect(() => {
     setName(currentUser.name);
     setDescription(currentUser.about);
-  }, [currentUser, isOpen]);
+  }, [currentUser, props.isOpen]);
 
   function handleSubmit(e) {
     e.preventDefault();
 
-    onUpdateUser({
+    props.onUpdateUser({
       name: name,
-      job: description,
+      job: description
     });
   }
 
@@ -35,9 +36,9 @@ function EditProfilePopup({ onUpdateUser, isOpen, onClose }) {
       title="Редактировать профиль"
       name="edit"
       submit="Сохранить"
-      isOpen={isOpen}
-      onClose={onClose}
-      onUpdateUser={onUpdateUser}
+      isOpen={props.isOpen}
+      onClose={props.onClose}
+      onUpdateUser={props.onUpdateUser}
       onSubmit={handleSubmit}
     >
       <input
@@ -49,7 +50,7 @@ function EditProfilePopup({ onUpdateUser, isOpen, onClose }) {
         required=""
         minLength={2}
         maxLength={40}
-        value={name || ""}
+        value={name || ''}
         onChange={handleNameChange}
       />
       <span id="input-name-error" className="popup__error" />
@@ -62,12 +63,12 @@ function EditProfilePopup({ onUpdateUser, isOpen, onClose }) {
         required=""
         minLength={2}
         maxLength={200}
-        value={description || ""}
+        value={description || ''}
         onChange={handleDescriptionChange}
       />
       <span id="input-job-error" className="popup__error" />
     </PopupWithForm>
-  );
+  )
 }
 
-export default EditProfilePopup;
+export default EditProfilePopup

@@ -1,11 +1,9 @@
-function Footer({ title }) {
+function Footer(props) {
   return (
-    <>
-      <footer className="footer">
-        <p className="footer__copyright">{title}</p>
-      </footer>
-    </>
-  );
+    <footer className="footer">
+      <p className="footer__copyright">{props.title}</p>
+    </footer>
+  )
 }
 
-export default Footer;
+export default Footer
