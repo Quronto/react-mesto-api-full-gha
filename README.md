@@ -5,12 +5,12 @@
   
 Пожалуйста, прикрепите в это описание ссылку на сайт, размещенный на Яндекс.Облаке.
 
-Адрес репозитория: https://github.com/...
+Адрес репозитория: https://github.com/Quronto/react-mesto-api-full-gha
 
 ## Ссылки на проект
 
-IP-адрес x.x.x.x
+IP-адрес 51.250.76.58
 
-Frontend https://...
+Frontend https://quronto.nomoreparties.co
 
-Backend https://...
+Backend https://api.quronto.nomoreparties.co
