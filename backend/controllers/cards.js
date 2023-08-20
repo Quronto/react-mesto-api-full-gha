@@ -14,7 +14,7 @@ const CreateCard = (req, res, next) => {
     })
     .catch((err) => {
       if (err.name === 'ValidationError') {
-        return next(new BedRequestError('Переданы некорректные данные при создании карточки.'));
+        next(new BedRequestError('Переданы некорректные данные при создании карточки.'));
       } else {
         next(err);
       }
@@ -36,7 +36,7 @@ const deleteCard = (req, res, next) => {
     .orFail(new NotFoundError('Передан несуществующий _id карточки'))
     .then((card) => {
       if (card.owner.toString() === req.user._id) {
-        return Card.findByIdAndRemove(cardId).then(() => res.status(200).send(card));
+        Card.findByIdAndRemove(cardId).then(() => res.status(200).send(card));
       } else {
         next(new ForbiddenError('Нельзя удалять чужие карточки'));
       }
@@ -56,7 +56,7 @@ const likeCard = (req, res, next) => {
     })
     .catch((err) => {
       if (err.name === 'CastError') {
-        return next(new BedRequestError('Переданы некорректные данные для постановки лайка.'));
+        next(new BedRequestError('Переданы некорректные данные для постановки лайка.'));
       } else {
         next(err);
       }
@@ -75,7 +75,7 @@ const disLikeCard = (req, res, next) => {
     })
     .catch((err) => {
       if (err.name === 'CastError') {
-        return next(new BedRequestError('Переданы некорректные данные для снятия лайка.'));
+        next(new BedRequestError('Переданы некорректные данные для снятия лайка.'));
       } else {
         next(err);
       }

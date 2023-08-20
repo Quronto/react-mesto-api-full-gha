@@ -53,7 +53,7 @@ const getUser = (req, res, next) => {
     .then((user) => res.status(200).send(user))
     .catch((err) => {
       if (err.name === 'CastError') {
-        return next(new BedRequestError('Переданы некорректные данные пользователя'));
+        next(new BedRequestError('Переданы некорректные данные пользователя'));
       } else {
         next(err);
       }
@@ -77,7 +77,7 @@ const patchProfile = (req, res, next) => {
     })
     .catch((err) => {
       if (err.name === 'ValidationError') {
-        return next(new BedRequestError('Переданы некорректные данные при обновлении профиля.'));
+        next(new BedRequestError('Переданы некорректные данные при обновлении профиля.'));
       } else {
         next(err);
       }
@@ -101,7 +101,7 @@ const patchAvatar = (req, res, next) => {
     })
     .catch((err) => {
       if (err.name === 'ValidationError') {
-        return next(new BedRequestError('Переданы некорректные данные при обновлении аватара.'));
+        next(new BedRequestError('Переданы некорректные данные при обновлении аватара.'));
       } else {
         next(err);
       }
