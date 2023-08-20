@@ -9,7 +9,7 @@
 
 ## Ссылки на проект
 
-IP-адрес 51.250.76.58
+IP 51.250.76.58
 
 Frontend https://quronto.nomoreparties.co
 
